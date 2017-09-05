@@ -1,5 +1,6 @@
 set number
 set autoindent
+set hls
 let mysyntaxfile="~/.vim/mysyntax.vim"
 syntax enable
 set encoding=utf-8
