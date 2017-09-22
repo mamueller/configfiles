@@ -17,15 +17,28 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 Bundle 'Valloric/YouCompleteMe'
 Plugin 'jmcantrell/vim-virtualenv'
+Plugin 'julienr/vim-cellmode'
+"Plugin 'jgdavey/tslime.vim'
+Plugin 'jebaum/vim-tmuxify'
+Plugin 'epeli/slimux'
+
 Plugin 'nvie/vim-flake8' "check that syntax conforms to PEP8
-
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
-
-
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 "end vundle
+
+" set slimux
+"let g:slimux_select_from_current_window = 1
+":SlimuxShellConfigure 2
+map <Leader>s :SlimuxREPLSendLine<CR>
+vmap <Leader>s :SlimuxREPLSendSelection<CR>
+map <Leader>b :SlimuxREPLSendBuffer<CR>
+map <Leader>a :SlimuxShellLast<CR>
+map <Leader>k :SlimuxSendKeysLast<CR>
+map <C-c><C-c> :SlimuxREPLSendSelection<CR>
+vmap <C-c><C-c> :SlimuxREPLSendSelection<CR>
 
 " Enable folding
 set foldmethod=indent
@@ -73,6 +86,8 @@ set ls=2
 "set spell
 "autocmd FileType tex    set textwidth=110
 "set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:o
+
+"set clipboard=unnamed
 
 "some setup for the NvimR plugin
 "We want to use tmux as terminal emulator and not neovims builtin terminal
