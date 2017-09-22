@@ -1,10 +1,19 @@
+"
+"learn vimscript the hard way examples
+echom ">^.^<"  
+let mapleader ='\' 		"\ is the default for the global leader anyway but now we can change it easily wiht this line
+let maplocalleader ='\' 	"\ is also the default for the local (bufferwise) leader
+
+nnoremap <leader>ev :vsplit $MYVIMRC<cr> 
+nnoremap <leader>sv :source $MYVIMRC<cr> 
+nnoremap <leader>et :vsplit ~/.tmux.conf<cr> 
+noremap <LocalLeader>d ddO<esc>p  
+
+inoremap <LocalLeader>u <esc><C-v>wUi<esc>w 
+nnoremap <LocalLeadeLocalLeader>u vwUw 
+
 " inspired by
 " https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/
-"greeting
-echom '>^.^<'
-map - djok<esc>p
-imap <c-u> <esc><C-v>wUi<esc>w 
-nmap <c-u> vwUw 
 "begin vundl
 set nocompatible "required
 filetype off "required
