@@ -1,7 +1,11 @@
 " inspired by
 " https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/
-
-"begin vundle
+"greeting
+echom '>^.^<'
+map - djok<esc>p
+imap <c-u> <esc><C-v>wUi<esc>w 
+nmap <c-u> vwUw 
+"begin vundl
 set nocompatible "required
 filetype off "required
 " set the runtime path to include Vundle and initialize
