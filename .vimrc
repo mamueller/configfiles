@@ -1,6 +1,6 @@
 "
 "learn vimscript the hard way examples
-echom ">^.^<"  
+"echo '>^.^<'  
 let mapleader ='\' 		"\ is the default for the global leader anyway but now we can change it easily wiht this line
 let maplocalleader ='\' 	"\ is also the default for the local (bufferwise) leader
 
@@ -11,6 +11,25 @@ noremap <LocalLeader>d ddO<esc>p
 
 inoremap <LocalLeader>u <esc><C-v>wUi<esc>w 
 nnoremap <LocalLeadeLocalLeader>u vwUw 
+augroup filetype_javascript
+	autocmd!
+	autocmd FileType javascript nnoremap <buffer> <localleader>c I//<esc>
+augroup END 
+
+augroup filetype_latex
+	autocmd!
+	autocmd FileType latex nnoremap <buffer> <localleader>cI%<esc>
+augroup END 
+
+augroup filetype_python
+	autocmd!
+	autocmd FileType python     nnoremap <buffer> <localleader>c I#<esc>
+augroup END 
+
+augroup filetype_html
+	autocmd!
+	autocmd FileType html nnoremap <buffer> <localleader>f Vatzf
+augroup END 
 
 " inspired by
 " https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/
@@ -31,6 +50,7 @@ Plugin 'vim-scripts/indentpython.vim'
 Bundle 'Valloric/YouCompleteMe'
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'julienr/vim-cellmode'
+Plugin 'vim-scripts/Vimball'
 "Plugin 'jgdavey/tslime.vim'
 Plugin 'jebaum/vim-tmuxify'
 Plugin 'epeli/slimux'
@@ -60,25 +80,32 @@ let g:SimpylFold_docstring_preview=1 "docstrings in folds
 
 " set python indentation
 au BufNewFile,BufRead *.py
-    \ set tabstop=4|
-    \ set softtabstop=4|
-    \ set shiftwidth=4|
-    "\ set textwidth=79|
-    \ set expandtab|
-    \ set autoindent|
-    \ set fileformat=unix
+    \ setlocal tabstop=4|
+    \ setlocal softtabstop=4|
+    \ setlocal shiftwidth=4|
+   "\ setlocal textwidth=79|
+    \ setlocal expandtab|
+    \ setlocal autoindent|
+    \ setlocal fileformat=unix
+
+" set indentation for shell scripts
+au BufNewFile,BufRead *.sh
+    \ setlocal tabstop=2|
+    \ setlocal softtabstop=2|
+    \ setlocal shiftwidth=2|
 
 " set indentation for web stuff
 au BufNewFile,BufRead *.js, *.html, *.css
-    \ set tabstop=2
-    \ set softtabstop=2
-    \ set shiftwidth=2
+    \ setlocal tabstop=2|
+    \ setlocal softtabstop=2|
+    \ setlocal shiftwidth=2|
 
 " set indentation for R
 au BufNewFile,BufRead *.r, *.R
-    \ set tabstop=2
-    \ set softtabstop=2
-    \ set shiftwidth=2
+    \ setlocal tabstop=2 |
+    \ setlocal softtabstop=2|
+    \ setlocal shiftwidth=2|
+    \ setlocal expandtab
 " flag unwanted whitespace (does not work at the moment
 "au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
