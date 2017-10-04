@@ -11,6 +11,20 @@ noremap <LocalLeader>d ddO<esc>p
 
 inoremap <LocalLeader>u <esc><C-v>wUi<esc>w 
 nnoremap <LocalLeadeLocalLeader>u vwUw 
+nnoremap H ^
+nnoremap L $
+"inoremap <esc> <nop>
+"inoremap jk <esc>
+"disaple arrow keys
+"nnoremap OC <nop>
+"nnoremap OD <nop>
+"nnoremap OA <nop>
+"nnoremap OB <nop>
+"quote visual selection
+vnoremap <leader>" <esc>`<i"<esc>`>ea" 
+"quote visual block
+vnoremap <leader>" <esc>'<i"<esc>'>o"
+iabbrev ssig -- <cr>Markus Müller<cr>markus.mueller.1.g@googlemail.com
 
 " inspired by
 " https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/
@@ -70,14 +84,16 @@ au BufNewFile,BufRead *.py
 
 " set indentation for web stuff
 au BufNewFile,BufRead *.js, *.html, *.css
-    \ set tabstop=2
-    \ set softtabstop=2
+    \ set tabstop=2|
+    \ set softtabstop=2|
     \ set shiftwidth=2
 
 " set indentation for R
 au BufNewFile,BufRead *.r, *.R
-    \ set tabstop=2
-    \ set softtabstop=2
+    \ set tabstop=2|
+    \ set softtabstop=2|
+    \ set autoindent|
+    \ set expandtab|
     \ set shiftwidth=2
 " flag unwanted whitespace (does not work at the moment
 "au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
