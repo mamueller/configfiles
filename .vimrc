@@ -125,7 +125,8 @@ set mouse=a
 set ls=2  
 "set spell
 "autocmd FileType tex    set textwidth=110
-"set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:o
+set listchars=eol:$,tab:>-,trail:~,extends:>,space:·,precedes:o
+set list
 
 "set clipboard=unnamed
 
