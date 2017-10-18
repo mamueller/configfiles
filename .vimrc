@@ -110,7 +110,6 @@ au BufNewFile,BufRead *.sh
 
 " set indentation for web stuff
 au BufNewFile,BufRead *.js, *.html, *.css
-<<<<<<< HEAD
     \ set tabstop=2|
     \ set softtabstop=2|
     \ set shiftwidth=2
@@ -148,5 +147,6 @@ set ls=2
 "some setup for the NvimR plugin
 "We want to use tmux as terminal emulator and not neovims builtin terminal
 let R_in_buffer = 0
+let R_nvimpager = 'vertical'
 let R_applescript = 0
 let R_tmux_split = 1
