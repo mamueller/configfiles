@@ -11,6 +11,20 @@ noremap <LocalLeader>d ddO<esc>p
 
 inoremap <LocalLeader>u <esc><C-v>wUi<esc>w 
 nnoremap <LocalLeadeLocalLeader>u vwUw 
+nnoremap H ^
+nnoremap L $
+"inoremap <esc> <nop>
+"inoremap jk <esc>
+"disaple arrow keys
+"nnoremap OC <nop>
+"nnoremap OD <nop>
+"nnoremap OA <nop>
+"nnoremap OB <nop>
+"quote visual selection
+vnoremap <leader>" <esc>`<i"<esc>`>ea" 
+"quote visual block
+vnoremap <leader>" <esc>'<i"<esc>'>o"
+iabbrev ssig -- <cr>Markus Müller<cr>markus.mueller.1.g@googlemail.com
 augroup filetype_javascript
 	autocmd!
 	autocmd FileType javascript nnoremap <buffer> <localleader>c I//<esc>
@@ -96,16 +110,17 @@ au BufNewFile,BufRead *.sh
 
 " set indentation for web stuff
 au BufNewFile,BufRead *.js, *.html, *.css
-    \ setlocal tabstop=2|
-    \ setlocal softtabstop=2|
-    \ setlocal shiftwidth=2|
+    \ set tabstop=2|
+    \ set softtabstop=2|
+    \ set shiftwidth=2
 
 " set indentation for R
 au BufNewFile,BufRead *.r, *.R
-    \ setlocal tabstop=2 |
-    \ setlocal softtabstop=2|
-    \ setlocal shiftwidth=2|
-    \ setlocal expandtab
+    \ set tabstop=2|
+    \ set softtabstop=2|
+    \ set autoindent|
+    \ set expandtab|
+    \ set shiftwidth=2
 " flag unwanted whitespace (does not work at the moment
 "au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
@@ -126,12 +141,14 @@ set mouse=a
 set ls=2  
 "set spell
 "autocmd FileType tex    set textwidth=110
-"set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:o
+set listchars=eol:$,tab:>-,trail:~,extends:>,space:·,precedes:o
+"set list
 
 "set clipboard=unnamed
 
 "some setup for the NvimR plugin
 "We want to use tmux as terminal emulator and not neovims builtin terminal
 let R_in_buffer = 0
+let R_nvimpager = 'vertical'
 let R_applescript = 0
 let R_tmux_split = 1
