@@ -152,3 +152,4 @@ let R_in_buffer = 0
 let R_nvimpager = 'vertical'
 let R_applescript = 0
 let R_tmux_split = 1
+let R_assign = 2
