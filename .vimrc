@@ -10,9 +10,9 @@ nnoremap <leader>et :vsplit ~/.tmux.conf<cr>
 noremap <LocalLeader>d ddO<esc>p  
 
 inoremap <LocalLeader>u <esc><C-v>wUi<esc>w 
-nnoremap <LocalLeadeLocalLeader>u vwUw 
-nnoremap H ^
-nnoremap L $
+"nnoremap <LocalLeadeLocalLeader>u vwUw 
+"nnoremap H ^
+"nnoremap L $
 "inoremap <esc> <nop>
 "inoremap jk <esc>
 "disaple arrow keys
@@ -68,7 +68,7 @@ Plugin 'vim-scripts/Vimball'
 "Plugin 'jgdavey/tslime.vim'
 Plugin 'jebaum/vim-tmuxify'
 Plugin 'epeli/slimux'
-
+Plugin 'jalvesaq/Nvim-R'
 Plugin 'nvie/vim-flake8' "check that syntax conforms to PEP8
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 " All of your Plugins must be added before the following line
@@ -84,35 +84,33 @@ vmap <Leader>s :SlimuxREPLSendSelection<CR>
 map <Leader>b :SlimuxREPLSendBuffer<CR>
 map <Leader>a :SlimuxShellLast<CR>
 map <Leader>k :SlimuxSendKeysLast<CR>
-map <C-c><C-c> :SlimuxREPLSendSelection<CR>
-vmap <C-c><C-c> :SlimuxREPLSendSelection<CR>
+"map <C-c><C-c> :SlimuxREPLSendSelection<CR>
+"vmap <C-c><C-c> :SlimuxREPLSendSelection<CR>
 
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
 let g:SimpylFold_docstring_preview=1 "docstrings in folds
 
+" set indentation for web stuff
+au BufNewFile,BufRead *.js, *.html, *.css
+    \ set tabstop=2| set softtabstop=2| set shiftwidth=2
+
 " set python indentation
 au BufNewFile,BufRead *.py
     \ setlocal tabstop=4|
     \ setlocal softtabstop=4|
     \ setlocal shiftwidth=4|
-   "\ setlocal textwidth=79|
     \ setlocal expandtab|
     \ setlocal autoindent|
     \ setlocal fileformat=unix
+   "\ setlocal textwidth=79|
 
 " set indentation for shell scripts
 au BufNewFile,BufRead *.sh
     \ setlocal tabstop=2|
     \ setlocal softtabstop=2|
     \ setlocal shiftwidth=2|
-
-" set indentation for web stuff
-au BufNewFile,BufRead *.js, *.html, *.css
-    \ set tabstop=2|
-    \ set softtabstop=2|
-    \ set shiftwidth=2
 
 " set indentation for R
 au BufNewFile,BufRead *.r, *.R
@@ -149,6 +147,7 @@ set listchars=eol:$,tab:>-,trail:~,extends:>,space:·,precedes:o
 "some setup for the NvimR plugin
 "We want to use tmux as terminal emulator and not neovims builtin terminal
 let R_in_buffer = 0
+let R_term_cmd= 'gnome-terminal'
 let R_nvimpager = 'vertical'
 let R_applescript = 0
 let R_tmux_split = 1
