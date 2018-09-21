@@ -5,6 +5,7 @@ call plug#begin('~/.local/share/nvim/plugged/')
  Plug 'jalvesaq/Nvim-R'
  Plug 'Valloric/YouCompleteMe'
  Plug 'nvie/vim-flake8'
+ Plug 'scrooloose/nerdtree'
 call plug#end()
 
 
@@ -38,6 +39,8 @@ set verbose=0
 augroup vimrc
 " remove all previously defined autocommands
   autocmd!  
+  "
+  autocmd VimEnter * NERDTree
   " set python indentation
   autocmd BufNewFile,BufRead *.py set tabstop=4 |set softtabstop=4 |set shiftwidth=4 |set expandtab |set autoindent |set fileformat=unix |set textwidth=79
   
