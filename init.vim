@@ -42,7 +42,12 @@ augroup vimrc
   "
   autocmd VimEnter * NERDTree
   " set python indentation
-  autocmd BufNewFile,BufRead *.py set tabstop=4 |set softtabstop=4 |set shiftwidth=4 |set expandtab |set autoindent |set fileformat=unix |set textwidth=79
+  au BufNewFile,BufRead *.py
+      \ setlocal tabstop=4|
+      \ setlocal softtabstop=4|
+      \ setlocal shiftwidth=4|
+      \ setlocal expandtab|
+      \ setlocal shiftround
   
   " set html indentation
   au BufNewFile,BufRead *.html 
@@ -53,4 +58,11 @@ augroup vimrc
         \set autoindent |
         \set fileformat=unix |
         \set textwidth=79
+  au BufNewFile,BufRead *.hs
+      \ setlocal tabstop=4|
+      \ setlocal softtabstop=4|
+      \ setlocal shiftwidth=4|
+      \ setlocal expandtab|
+      \ setlocal shiftround
+
 augroup END 
