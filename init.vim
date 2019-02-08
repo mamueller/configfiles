@@ -6,8 +6,12 @@ call plug#begin('~/.local/share/nvim/plugged/')
  Plug 'Valloric/YouCompleteMe'
  Plug 'nvie/vim-flake8'
  Plug 'scrooloose/nerdtree'
+ Plug 'Integralist/vim-mypy'
+ Plug 'LnL7/vim-nix'
 call plug#end()
-
+"set direction in which splits occure
+set splitright
+set splitbelow
 
 set mouse=a
 set number
@@ -41,6 +45,7 @@ augroup vimrc
   autocmd!  
   "
   autocmd VimEnter * NERDTree
+  
   " set python indentation
   au BufNewFile,BufRead *.py
       \ setlocal tabstop=4|
