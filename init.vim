@@ -1,11 +1,12 @@
 call plug#begin('~/.local/share/nvim/plugged/')
 " Initialize plugin system
- Plug 'chriskempson/base16-vim'
- Plug 'hkupty/iron.nvim'
- Plug 'jalvesaq/Nvim-R'
- Plug 'Valloric/YouCompleteMe'
- Plug 'nvie/vim-flake8'
- Plug 'scrooloose/nerdtree'
+  Plug 'chriskempson/base16-vim'
+  Plug 'hkupty/iron.nvim'
+  Plug 'vigemus/impromptu.nvim'
+  Plug 'jalvesaq/Nvim-R'
+  Plug 'Valloric/YouCompleteMe'
+  Plug 'nvie/vim-flake8'
+  Plug 'scrooloose/nerdtree'
 call plug#end()
 
 
@@ -14,6 +15,7 @@ set number
 set autoindent
 set hls
 set modeline
+set splitright
 
 nnoremap <leader>ev :vsplit $MYVIMRC<cr> 
 nnoremap <leader>sv :source $MYVIMRC<cr> 
@@ -66,3 +68,5 @@ augroup vimrc
       \ setlocal shiftround
 
 augroup END 
+luafile $HOME/.config/nvim/iron.lua
+luafile $HOME/.config/nvim/impromptu_example.lua
