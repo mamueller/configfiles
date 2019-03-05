@@ -2,13 +2,16 @@ call plug#begin('~/.local/share/nvim/plugged/')
 " Initialize plugin system
   Plug 'chriskempson/base16-vim'
   Plug 'hkupty/iron.nvim'
-  Plug 'vigemus/impromptu.nvim'
+  " Plug 'vigemus/impromptu.nvim'
+  " Plug 'bfredl/nvim-ipy'
   Plug 'jalvesaq/Nvim-R'
   Plug 'Valloric/YouCompleteMe'
   Plug 'nvie/vim-flake8'
   Plug 'scrooloose/nerdtree'
 call plug#end()
-
+"set direction in which splits occure
+set splitright
+set splitbelow
 
 set mouse=a
 set number
@@ -43,6 +46,7 @@ augroup vimrc
   autocmd!  
   "
   autocmd VimEnter * NERDTree
+  
   " set python indentation
   au BufNewFile,BufRead *.py
       \ setlocal tabstop=4|
@@ -69,4 +73,4 @@ augroup vimrc
 
 augroup END 
 luafile $HOME/.config/nvim/iron.lua
-luafile $HOME/.config/nvim/impromptu_example.lua
+"luafile $HOME/.config/nvim/impromptu_example.lua
