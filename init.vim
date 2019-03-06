@@ -2,12 +2,14 @@ call plug#begin('~/.local/share/nvim/plugged/')
 " Initialize plugin system
   Plug 'chriskempson/base16-vim'
   Plug 'hkupty/iron.nvim'
-  " Plug 'vigemus/impromptu.nvim'
-  " Plug 'bfredl/nvim-ipy'
   Plug 'jalvesaq/Nvim-R'
   Plug 'Valloric/YouCompleteMe'
   Plug 'nvie/vim-flake8'
   Plug 'scrooloose/nerdtree'
+ Plug 'integralist/vim-mypy'
+ Plug 'LnL7/vim-nix'
+  " Plug 'vigemus/impromptu.nvim'
+  " Plug 'bfredl/nvim-ipy'
 call plug#end()
 "set direction in which splits occure
 set splitright
