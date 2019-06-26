@@ -6,7 +6,7 @@ call plug#begin('~/.local/share/nvim/plugged/')
   Plug 'Valloric/YouCompleteMe'
   Plug 'nvie/vim-flake8'
   Plug 'scrooloose/nerdtree'
- Plug 'integralist/vim-mypy'
+" Plug 'integralist/vim-mypy'
  Plug 'LnL7/vim-nix'
   " Plug 'vigemus/impromptu.nvim'
   " Plug 'bfredl/nvim-ipy'
@@ -50,7 +50,15 @@ augroup vimrc
   autocmd VimEnter * NERDTree
   
   " set python indentation
-  au BufNewFile,BufRead *.py
+  au BufNewFile,BufRead *.py 
+      \ setlocal tabstop=4|
+      \ setlocal softtabstop=4|
+      \ setlocal shiftwidth=4|
+      \ setlocal expandtab|
+      \ setlocal shiftround
+  
+  " set R indentation
+  au BufNewFile,BufRead *.R 
       \ setlocal tabstop=4|
       \ setlocal softtabstop=4|
       \ setlocal shiftwidth=4|
