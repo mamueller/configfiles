@@ -1,3 +1,4 @@
+"This file has to be linkes to ~/.config/nvim/init.vim
 call plug#begin('~/.local/share/nvim/plugged/')
 " Initialize plugin system
   Plug 'chriskempson/base16-vim'
@@ -58,22 +59,24 @@ augroup vimrc
       \ setlocal shiftround
   
   " set R indentation
-  au BufNewFile,BufRead *.R 
+  au BufNewFile,BufRead *.R ,*.Rnw
       \ setlocal tabstop=4|
       \ setlocal softtabstop=4|
       \ setlocal shiftwidth=4|
       \ setlocal expandtab|
-      \ setlocal shiftround
+      \ set fileformat=unix |
+      \ set textwidth=79
   
   " set html indentation
-  au BufNewFile,BufRead *.html 
-        \set tabstop=2 |
-        \set softtabstop=2 |
-        \set shiftwidth=2| 
-        \set expandtab |
-        \set autoindent |
-        \set fileformat=unix |
-        \set textwidth=79
+  au BufNewFile,BufRead *.html
+      \ set tabstop=2 |
+      \ set softtabstop=2 |
+      \ set shiftwidth=2| 
+      \ set expandtab |
+      \ set autoindent |
+      \ set fileformat=unix |
+      \ set textwidth=79
+
   au BufNewFile,BufRead *.hs
       \ setlocal tabstop=4|
       \ setlocal softtabstop=4|
