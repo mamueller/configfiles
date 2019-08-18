@@ -13,8 +13,8 @@ call plug#begin('~/.local/share/nvim/plugged/')
   " Plug 'bfredl/nvim-ipy'
 call plug#end()
 "set direction in which splits occure
-set splitright
-set splitbelow
+"set splitright
+"set splitbelow
 
 set mouse=a
 set number
@@ -51,38 +51,23 @@ augroup vimrc
   autocmd VimEnter * NERDTree
   
   " set python indentation
-  au BufNewFile,BufRead *.py 
+  au BufNewFile,BufRead *.py ,*.hs,*.R,*.Rnw
       \ setlocal tabstop=4|
       \ setlocal softtabstop=4|
       \ setlocal shiftwidth=4|
       \ setlocal expandtab|
       \ setlocal shiftround
-  
-  " set R indentation
-  au BufNewFile,BufRead *.R ,*.Rnw
-      \ setlocal tabstop=4|
-      \ setlocal softtabstop=4|
-      \ setlocal shiftwidth=4|
-      \ setlocal expandtab|
-      \ set fileformat=unix |
-      \ set textwidth=79
   
   " set html indentation
-  au BufNewFile,BufRead *.html
-      \ set tabstop=2 |
-      \ set softtabstop=2 |
-      \ set shiftwidth=2| 
-      \ set expandtab |
-      \ set autoindent |
-      \ set fileformat=unix |
-      \ set textwidth=79
+  au BufNewFile,BufRead *.html,*.tex,*.sh
+      \ setlocal tabstop=2 |
+      \ setlocal softtabstop=2 |
+      \ setlocal shiftwidth=2| 
+      \ setlocal expandtab |
+      \ setlocal autoindent |
+      \ setlocal fileformat=unix |
+      \ setlocal textwidth=79
 
-  au BufNewFile,BufRead *.hs
-      \ setlocal tabstop=4|
-      \ setlocal softtabstop=4|
-      \ setlocal shiftwidth=4|
-      \ setlocal expandtab|
-      \ setlocal shiftround
 
 augroup END 
 luafile $HOME/.config/nvim/iron.lua
