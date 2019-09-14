@@ -57,21 +57,6 @@ augroup vimrc
       \ setlocal expandtab|
       \ setlocal shiftround
   
-<<<<<<< HEAD
-  " set R indentation
-  au BufNewFile,BufRead *.Rnw
-      \ setlocal tabstop=4|
-      \ setlocal expandtab|
-      \ setlocal fileformat=unix |
-      \ setlocal textwidth=79
-  
-  au BufNewFile,BufRead *.R 
-      \ setlocal tabstop=4|
-      \ setlocal softtabstop=4|
-      \ setlocal shiftwidth=4|
-      \ setlocal expandtab|
-      \ setlocal shiftround
-
   " set html indentation
   au BufNewFile,BufRead *.html,*.tex,*.sh
       \ setlocal tabstop=2 |
