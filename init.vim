@@ -13,15 +13,14 @@ call plug#begin('~/.local/share/nvim/plugged/')
   " Plug 'bfredl/nvim-ipy'
 call plug#end()
 "set direction in which splits occure
-set splitright
-set splitbelow
+"set splitright
+"set splitbelow
 
 set mouse=a
 set number
 set autoindent
 set hls
 set modeline
-set splitright
 
 nnoremap <leader>ev :vsplit $MYVIMRC<cr> 
 nnoremap <leader>sv :source $MYVIMRC<cr> 
@@ -48,7 +47,7 @@ augroup vimrc
 " remove all previously defined autocommands
   autocmd!  
   "
-  autocmd VimEnter * NERDTree
+  "autocmd VimEnter * NERDTree
   
   " set python indentation
   au BufNewFile,BufRead *.py 
@@ -59,23 +58,28 @@ augroup vimrc
       \ setlocal shiftround
   
   " set R indentation
-  au BufNewFile,BufRead *.R ,*.Rnw
+  au BufNewFile,BufRead *.Rnw
+      \ setlocal tabstop=4|
+      \ setlocal expandtab|
+      \ setlocal fileformat=unix |
+      \ setlocal textwidth=79
+  
+  au BufNewFile,BufRead *.R 
       \ setlocal tabstop=4|
       \ setlocal softtabstop=4|
       \ setlocal shiftwidth=4|
       \ setlocal expandtab|
-      \ set fileformat=unix |
-      \ set textwidth=79
-  
+      \ setlocal shiftround
+
   " set html indentation
   au BufNewFile,BufRead *.html
-      \ set tabstop=2 |
-      \ set softtabstop=2 |
-      \ set shiftwidth=2| 
-      \ set expandtab |
-      \ set autoindent |
-      \ set fileformat=unix |
-      \ set textwidth=79
+      \ setlocal tabstop=2 |
+      \ setlocal softtabstop=2 |
+      \ setlocal shiftwidth=2| 
+      \ setlocal expandtab |
+      \ setlocal autoindent |
+      \ setlocal fileformat=unix |
+      \ setlocal textwidth=79
 
   au BufNewFile,BufRead *.hs
       \ setlocal tabstop=4|
