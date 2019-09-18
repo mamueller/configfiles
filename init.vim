@@ -7,10 +7,22 @@ call plug#begin('~/.local/share/nvim/plugged/')
   Plug 'Valloric/YouCompleteMe'
   Plug 'nvie/vim-flake8'
   Plug 'scrooloose/nerdtree'
+  Plug 'rudrab/vimf90'
 " Plug 'integralist/vim-mypy'
  Plug 'LnL7/vim-nix'
   " Plug 'vigemus/impromptu.nvim'
   " Plug 'bfredl/nvim-ipy'
+  Plug 'lervag/vimtex'
+if has('nvim')
+  "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+let g:deoplete#enable_at_startup = 1
 call plug#end()
 "set direction in which splits occure
 "set splitright
@@ -48,10 +60,10 @@ augroup vimrc
 " remove all previously defined autocommands
   autocmd!  
   "
-  autocmd VimEnter * NERDTree
+  "autocmd VimEnter * NERDTree
   
   " set python indentation
-  au BufNewFile,BufRead *.py ,*.hs,*.R,*.Rnw
+  au BufNewFile,BufRead *.py,*.hs,*.R,*.Rnw
       \ setlocal tabstop=4|
       \ setlocal softtabstop=4|
       \ setlocal shiftwidth=4|
@@ -59,14 +71,14 @@ augroup vimrc
       \ setlocal shiftround
   
   " set html indentation
-  au BufNewFile,BufRead *.html,*.tex,*.sh
+  au BufNewFile,BufRead *.html,*.tex,*.sh,*.F90
       \ setlocal tabstop=2 |
       \ setlocal softtabstop=2 |
       \ setlocal shiftwidth=2| 
       \ setlocal expandtab |
       \ setlocal autoindent |
       \ setlocal fileformat=unix |
-      \ setlocal textwidth=79
+     " \ setlocal textwidth=79
 
 
 augroup END 
