@@ -33,7 +33,6 @@ set number
 set autoindent
 set hls
 set modeline
-set splitright
 
 nnoremap <leader>ev :vsplit $MYVIMRC<cr> 
 nnoremap <leader>sv :source $MYVIMRC<cr> 
