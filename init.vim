@@ -50,7 +50,7 @@ augroup vimrc
   "autocmd VimEnter * NERDTree
   
   " set python indentation
-  au BufNewFile,BufRead *.py ,*.hs,*.R,*.Rnw
+  au BufNewFile,BufRead *.py,*.hs,*.R,*.Rnw
       \ setlocal tabstop=4|
       \ setlocal softtabstop=4|
       \ setlocal shiftwidth=4|
