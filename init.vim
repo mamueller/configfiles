@@ -62,7 +62,7 @@ augroup vimrc
   "autocmd VimEnter * NERDTree
   
   " set python indentation
-  au BufNewFile,BufRead *.py,*.hs,*.R,*.Rnw
+  au BufNewFile,BufRead *.py
       \ setlocal tabstop=4|
       \ setlocal softtabstop=4|
       \ setlocal shiftwidth=4|
@@ -70,7 +70,7 @@ augroup vimrc
       \ setlocal shiftround
   
   " set html indentation
-  au BufNewFile,BufRead *.html,*.tex,*.sh,*.F90
+  au BufNewFile,BufRead *.html,*.tex,*.sh,*.F90,*.R,*.Rnw,*.hs
       \ setlocal tabstop=2 |
       \ setlocal softtabstop=2 |
       \ setlocal shiftwidth=2| 
