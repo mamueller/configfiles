@@ -33,6 +33,8 @@ set number
 set autoindent
 set hls
 set modeline
+"set clipboard=unnamed
+set clipboard=unnamedplus
 
 nnoremap <leader>ev :vsplit $MYVIMRC<cr> 
 nnoremap <leader>sv :source $MYVIMRC<cr> 
