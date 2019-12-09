@@ -38,6 +38,7 @@ set clipboard=unnamedplus
 
 nnoremap <leader>ev :vsplit $MYVIMRC<cr> 
 nnoremap <leader>sv :source $MYVIMRC<cr> 
+map <F4> :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
 
 "some setup for the NvimR plugin
 let R_nvimpager = 'vertical'
