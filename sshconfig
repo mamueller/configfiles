@@ -1,0 +1,110 @@
+Host     arm
+HostName 192.168.1.103
+User     mm
+ForwardX11              yes
+ForwardX11Trusted       yes
+ServerAliveInterval     60
+
+#Host df
+#HostName 5684555468388.hostingkunde.de
+#user ssh-568455-mm
+#
+#Host     warm
+#HostName 192.168.1.107
+#User     mm
+#ForwardX11              yes
+#ForwardX11Trusted       yes
+#ServerAliveInterval     60
+#
+#
+#Host    caos 
+## hostname only inside VPN
+#HostName caos
+#User     mm
+#ForwardX11              yes
+#ForwardX11Trusted       yes
+#ServerAliveInterval     60
+
+Host     login
+User     mamueller
+HostName login.bgc-jena.mpg.de
+ServerAliveInterval     60
+
+
+Host     antakya 
+HostName antakya.bgc-jena.mpg.de
+	ForwardX11              yes
+	ForwardX11Trusted       yes
+	ServerAliveInterval     60
+	Port 22
+	User mm
+	ProxyCommand ssh -q -W %h:%p login
+	# this effects the same action as using 
+	# the -J (jumphost) option 
+	# on the commandline 
+	# ssh -J login antakya
+
+Host     antakya-tunnel-8889-to-localhost-8080
+HostName antakya.bgc-jena.mpg.de
+	ForwardX11              yes
+	ForwardX11Trusted       yes
+	ServerAliveInterval     60
+	LocalForward 8080 localhost:8889
+	Port 22
+	User mm
+	ProxyCommand ssh -q -W %h:%p login
+	# this effects the same action as using 
+	# the -J (jumphost) option 
+	# on the commandline 
+	# ssh -J login antakya
+	#
+Host     matagorda
+HostName matagorda.bgc-jena.mpg.de
+	ForwardX11              yes
+	ForwardX11Trusted       yes
+	ServerAliveInterval     60
+	Port 22
+	User mm
+	ProxyCommand ssh -q -W %h:%p login
+	# this effects the same action as using 
+	# the -J (jumphost) option 
+	# on the commandline 
+	# ssh -J login matagorda
+
+
+
+Host     matagorda-tunnel-8889-to-localhost-8080
+HostName matagorda.bgc-jena.mpg.de
+	ForwardX11              yes
+	ForwardX11Trusted       yes
+	ServerAliveInterval     60
+	LocalForward 8080 localhost:8889
+	Port 22
+	User mm
+	ProxyCommand ssh -q -W %h:%p login
+	# this effects the same action as using 
+	# the -J (jumphost) option 
+	# on the commandline 
+	# ssh -J login matagorda
+
+Host     musculus
+User     mm
+HostName musculus.luhj.de
+#HostName  
+ServerAliveInterval     60
+
+Host     hyperius
+User     mm
+#HostName  hyperius.luhj.de 
+HostName  78.46.75.187
+ServerAliveInterval     60
+
+Host     myconius
+User     mm
+HostName  2a01:198:200:88e5:ee04:e277:cbb7:c2bc
+ServerAliveInterval     60
+
+
+Host     bodenstein
+HostName  2a01:198:200:88e5:a60:6eff:fe69:9ee6
+ServerAliveInterval     60
