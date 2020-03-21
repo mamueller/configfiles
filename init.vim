@@ -1,3 +1,4 @@
+"This file has to be linkes to ~/.config/nvim/init.vim
 call plug#begin('~/.local/share/nvim/plugged/')
 " Initialize plugin system
   Plug 'chriskempson/base16-vim'
@@ -6,24 +7,38 @@ call plug#begin('~/.local/share/nvim/plugged/')
   Plug 'Valloric/YouCompleteMe'
   Plug 'nvie/vim-flake8'
   Plug 'scrooloose/nerdtree'
- Plug 'integralist/vim-mypy'
+  Plug 'rudrab/vimf90'
+" Plug 'integralist/vim-mypy'
  Plug 'LnL7/vim-nix'
   " Plug 'vigemus/impromptu.nvim'
   " Plug 'bfredl/nvim-ipy'
+  Plug 'lervag/vimtex'
+if has('nvim')
+  "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+let g:deoplete#enable_at_startup = 1
 call plug#end()
 "set direction in which splits occure
-set splitright
-set splitbelow
+"set splitright
+"set splitbelow
 
 set mouse=a
 set number
 set autoindent
 set hls
 set modeline
-set splitright
+"set clipboard=unnamed
+set clipboard=unnamedplus
 
 nnoremap <leader>ev :vsplit $MYVIMRC<cr> 
 nnoremap <leader>sv :source $MYVIMRC<cr> 
+map <F4> :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
 
 "some setup for the NvimR plugin
 let R_nvimpager = 'vertical'
@@ -47,7 +62,7 @@ augroup vimrc
 " remove all previously defined autocommands
   autocmd!  
   "
-  autocmd VimEnter * NERDTree
+  "autocmd VimEnter * NERDTree
   
   " set python indentation
   au BufNewFile,BufRead *.py
@@ -58,20 +73,15 @@ augroup vimrc
       \ setlocal shiftround
   
   " set html indentation
-  au BufNewFile,BufRead *.html 
-        \set tabstop=2 |
-        \set softtabstop=2 |
-        \set shiftwidth=2| 
-        \set expandtab |
-        \set autoindent |
-        \set fileformat=unix |
-        \set textwidth=79
-  au BufNewFile,BufRead *.hs
-      \ setlocal tabstop=4|
-      \ setlocal softtabstop=4|
-      \ setlocal shiftwidth=4|
-      \ setlocal expandtab|
-      \ setlocal shiftround
+  au BufNewFile,BufRead *.html,*.tex,*.sh,*.F90,*.R,*.Rnw,*.hs
+      \ setlocal tabstop=2 |
+      \ setlocal softtabstop=2 |
+      \ setlocal shiftwidth=2| 
+      \ setlocal expandtab |
+      \ setlocal autoindent |
+      \ setlocal fileformat=unix |
+     " \ setlocal textwidth=79
+
 
 augroup END 
 luafile $HOME/.config/nvim/iron.lua
