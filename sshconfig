@@ -1,29 +1,3 @@
-Host     arm
-HostName 192.168.1.103
-User     mm
-ForwardX11              yes
-ForwardX11Trusted       yes
-ServerAliveInterval     60
-
-#Host df
-#HostName 5684555468388.hostingkunde.de
-#user ssh-568455-mm
-#
-#Host     warm
-#HostName 192.168.1.107
-#User     mm
-#ForwardX11              yes
-#ForwardX11Trusted       yes
-#ServerAliveInterval     60
-#
-#
-#Host    caos 
-## hostname only inside VPN
-#HostName caos
-#User     mm
-#ForwardX11              yes
-#ForwardX11Trusted       yes
-#ServerAliveInterval     60
 
 Host     login
 User     mamueller
@@ -107,4 +81,19 @@ ServerAliveInterval     60
 
 Host     bodenstein
 HostName  2a01:198:200:88e5:a60:6eff:fe69:9ee6
+ServerAliveInterval     60
+
+Host agricola6
+	HostName 2a01:4f8:161:504e::4
+	User mm
+
+Host agricola
+	HostName agricola.luhj.de
+	User mm
+
+Host     arm
+HostName 192.168.1.103
+User     mm
+ForwardX11              yes
+ForwardX11Trusted       yes
 ServerAliveInterval     60

@@ -1,4 +1,10 @@
 # rsync sources to dev machine
+# example usage:
+# Assume on your own machine you are in 
+# '~/network'
+# rsyncs agricola
+# will create (or sync) the directory ~/network on agricola
+# 
 rsyncs() {
     local target="${1:?no target given}"
     local project="${PWD##*/}"
