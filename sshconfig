@@ -95,8 +95,8 @@ ServerAliveInterval     60
 
 Host     hyperius
 User     mm
-#HostName  hyperius.luhj.de 
-HostName  78.46.75.187
+HostName  hyperius.luhj.de 
+#HostName  78.46.75.187
 ServerAliveInterval     60
 
 Host     myconius

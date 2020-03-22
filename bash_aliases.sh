@@ -1,3 +1,6 @@
-alias R-devel='/home/mm/local/lib/R-devel/bin/R'
-alias Rscript-devel='/home/mm/local/lib/R-devel/bin/Rscript'
-
+alias vi='nvim'
+alias gt='gnome-terminal'
+alias jls='jupyter-lab --port=8889 --port-retries=0'
+alias ll='ls -alF'
+alias ls='ls -A'
+alias l='ls -CF'
