@@ -50,7 +50,7 @@ let iron_repl_open_cmd = "vsplit"
 " Colors {{{
  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
  syntax enable                " enable syntax processing
-" let base16colorspace=256
+ let base16colorspace=256
 " colorscheme base16-default-light
 " set background=light
 " colorscheme base16-default-dark
