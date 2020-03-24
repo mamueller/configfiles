@@ -41,10 +41,10 @@ HostName 192.168.1.103
 Host     login
 User     mamueller
 
-Host antakya antakya-tunnel-8889-to-localhost-8080 arm agrigola agricola6 bodenstein hyperius matagorda matagorda-tunnel-8889-to-localhost-8080  myconius musculus 
+Host antakya antakya-tunnel-8889-to-localhost-8080 arm agricola agricola6 bodenstein hyperius matagorda matagorda-tunnel-8889-to-localhost-8080  myconius musculus 
 	User     mm
 
-Host antakya antakya-tunnel-8889-to-localhost-8080 arm agrigola agricola6 bodenstein hyperius login matagorda matagorda-tunnel-8889-to-localhost-8080  myconius musculus 
+Host antakya antakya-tunnel-8889-to-localhost-8080 arm agricola agricola6 bodenstein hyperius login matagorda matagorda-tunnel-8889-to-localhost-8080  myconius musculus 
 	ServerAliveInterval     60
 
 Host antakya antakya-tunnel-8889-to-localhost-8080 matagorda matagorda-tunnel-8889-to-localhost-8080
