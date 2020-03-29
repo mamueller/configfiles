@@ -41,23 +41,10 @@ if [ -f ~/configfiles/bash_aliases.sh ]; then
 fi
 
 # find hostspecific configuration_file
-hcp=~/configfiles/bash_$(hostname).sh
-test=$(hostname)
-if [ -f "$hpc" ]; then
+hcp=~/configfiles/bashrc_$(hostname).sh
+if [ -f $hpc ]; then
+  echo "######################"
+  echo "sourced host specific config in $hcp"
 	source $hcp
 fi
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-    alias vi="nvim"
-    source /home/mm/.nix-profile/etc/profile.d/nix.sh 
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-    alias cdc="cd  ~/bgc-md/prototypes/ModelsAsScriptsWithSpecialVarNames/models/miniCable/cable_all/cable_transit_time"
-fi
