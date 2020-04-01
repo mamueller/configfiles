@@ -19,3 +19,20 @@ rsyncs() {
     echo "execution cmd: $cmd ./ ${target}:${project}/"
     eval $cmd ./ ${target}:${project}/
 }
+
+session_name='pps' #pair_programming_session
+attachTmux(){
+  tmux -S /tmp/sharedtmux attach -t $session_name
+}
+
+pairTmux(){
+ # tmux -S /tmp/sharedtmux new -s shared #would create an new session
+ # but would not be able to change the ownership
+ # so we 
+ # 1. create a session and immediately detach from it
+ tmux -S /tmp/sharedtmux new-session -d -s $session_name
+ # 2. change the ownership of the socket
+ chgrp pairprogrammers /tmp/sharedtmux 
+ # 3. attach
+ attachTmux
+}

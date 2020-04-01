@@ -36,9 +36,6 @@ export EDITOR=nvim
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/configfiles/bash_aliases.sh ]; then
-    . ~/configfiles/bash_aliases.sh
-fi
 
 # find hostspecific configuration_file
 hcp=~/configfiles/bashrc_$(hostname).sh
@@ -48,3 +45,5 @@ if [ -f $hpc ]; then
 	source $hcp
 fi
 
+source ~/configfiles/bash_snippets.sh
+source ~/configfiles/bash_aliases.sh
