@@ -27,7 +27,8 @@ Host    myconius
 
 
 Host    bodenstein
-	HostName  2a01:198:200:88e5:a60:6eff:fe69:9ee6
+        #HostName  2a01:198:200:88e5:a60:6eff:fe69:9ee6
+	HostName bodenstein.luhj.de
 
 Host agricola6
 	HostName 2a01:4f8:161:504e::4
@@ -51,12 +52,11 @@ Host antakya antakya-tunnel-8889-to-localhost-8080 matagorda matagorda-tunnel-88
 	ForwardX11              yes
 	ForwardX11Trusted       yes
 
-Host antakya-tunnel-8889-to-localhost-8080 matagorda-tunnel-8889-to-localhost-8080
+Host antakya-tunnel-8889-to-localhost-8080 
 	LocalForward 8080 localhost:8889
-	# this effects the same action as using 
-	# the -J (jumphost) option 
-	# on the commandline 
-	# ssh -J login antakya
+
+Host matagorda-tunnel-8889-to-localhost-8081
+	LocalForward 8081 localhost:8889
 
 Host antakya antakya-tunnel-8889-to-localhost-8080 matagorda matagorda-tunnel-8889-to-localhost-8080 
 	ProxyCommand ssh -q -W %h:%p login
