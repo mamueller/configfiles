@@ -5,14 +5,16 @@ Host    login
 Host    antakya 
 	HostName antakya.bgc-jena.mpg.de
 
-Host    antakya-tunnel-8889-to-localhost-8080
+Host    antakya-tunnel-8889
 	HostName antakya.bgc-jena.mpg.de
+	LocalForward 8080 localhost:8889 # The callers localhost:8080 will point to remote:8889
 	
 Host    matagorda
 	HostName matagorda.bgc-jena.mpg.de
 
-Host    matagorda-tunnel-8889-to-localhost-8080
+Host    matagorda-tunnel-8889
 	HostName matagorda.bgc-jena.mpg.de
+	LocalForward 8081 localhost:8889 # The callers localhost:8081 will point to remote:8889
 
 Host    musculus
 	HostName musculus.luhj.de
@@ -48,17 +50,11 @@ Host antakya antakya-tunnel-8889-to-localhost-8080 arm agricola agricola6 bodens
 Host antakya antakya-tunnel-8889-to-localhost-8080 arm agricola agricola6 bodenstein hyperius login matagorda matagorda-tunnel-8889-to-localhost-8080  myconius musculus 
 	ServerAliveInterval     60
 
-Host antakya antakya-tunnel-8889-to-localhost-8080 matagorda matagorda-tunnel-8889-to-localhost-8080
+Host antakya antakya-tunnel-8889 matagorda matagorda-tunnel-8889
 	ForwardX11              yes
 	ForwardX11Trusted       yes
 
-Host antakya-tunnel-8889-to-localhost-8080 
-	LocalForward 8080 localhost:8889
-
-Host matagorda-tunnel-8889-to-localhost-8081
-	LocalForward 8081 localhost:8889
-
-Host antakya antakya-tunnel-8889-to-localhost-8080 matagorda matagorda-tunnel-8889-to-localhost-8080 
+Host antakya antakya-tunnel-8889 matagorda matagorda-tunnel-8889 
 	ProxyCommand ssh -q -W %h:%p login
 	# this effects the same action as using 
 	# the -J (jumphost) option 
