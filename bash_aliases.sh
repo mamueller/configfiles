@@ -1,7 +1,7 @@
 alias vi='nvim'
 alias gt='gnome-terminal'
-alias jls='jupyter-lab --port=8889 --port-retries=0 --no-browser'
-alias jns='jupyter notebook --port=8889 --port-retries=0 --no-browser'
+alias jl='jupyter-lab --port=8889 --port-retries=0 --no-browser'
+alias jn='jupyter notebook --port=8889 --port-retries=0 --no-browser'
 alias ll='ls -alF'
 alias l='ls -CF'
 if [ -x /usr/bin/dircolors ]; then
