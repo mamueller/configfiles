@@ -1,3 +1,7 @@
+## ~/.nixpkgs/config.nix 
+## this file is not used at the moment since the packages are installed 
+## by home manager
+## 
 {
   packageOverrides = pkgs: with pkgs; {
     # install by nix-env -iA nixpkg.myVim
