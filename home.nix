@@ -1,5 +1,8 @@
 # This file has to be linked to ~/.config/nixpkgs/home.nix
-# and home-manager has to be installed via nix-env or nox
+# and home-manager has to be installed as described in 
+# https://rycee.gitlab.io/home-manager/index.html#sec-install-standalone
+# and activated in your profile 
+# export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
 { config, pkgs, ... }:
 let vimrcstr= ''
     syntax enable
