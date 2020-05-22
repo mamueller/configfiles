@@ -16,9 +16,10 @@
     	'';
         vimrcConfig.packages.myVimPackage = with pkgs.vimPlugins; {
           # loaded on launch
-          start = [ youcompleteme vim-nix];
+          plug.plugins = [ roxma/vim-tmux-clipboard LnL7/vim-nix ];
+          #start = [ youcompleteme vim-nix];
           # manually loadable by calling `:packadd $plugin-name`
-          opt = [ elm-vim ];
+          #opt = [ elm-vim ];
           # To automatically load a plugin when opening a filetype, add vimrc lines like:
           # autocmd FileType php :packadd phpCompletion
         };
