@@ -30,7 +30,7 @@ let vimrcstr= ''
     # You can update Home Manager without changing this value. See
     # the Home Manager release notes for a list of state version
     # changes in each release.
-    home.stateVersion = "19.09";
+    home.stateVersion = "20.03";
     home.packages= [
       (pkgs.python3.withPackages(ps: [
       ps.python-language-server
