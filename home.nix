@@ -38,12 +38,15 @@ let vimrcstr= ''
       ps.pyls-mypy ps.pyls-isort ps.pyls-black
       ]))
     ];
-    programs.vim = {
-      enable = true;
-      plugins =  [ pkgs.vimPlugins.LanguageClient-neovim pkgs.vimPlugins.vim-nix ];
-      settings = { ignorecase = true; };
-      extraConfig = vimrcstr; 
-    };  
+    #programs.vim = {
+    #  enable = true;
+    #  plugins =  [ 
+    #    pkgs.vimPlugins.LanguageClient-neovim 
+    #    pkgs.vimPlugins.vim-nix 
+    #  ];
+    #  settings = { ignorecase = true; };
+    #  extraConfig = vimrcstr; 
+    #};  
     programs.neovim = {
       enable = true;
         configure = {
