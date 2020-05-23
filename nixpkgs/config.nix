@@ -12,6 +12,15 @@
         sha256 = "10l01a8xaivz6n01x6hzfx7gd0igd0wcf9ril0sllqzbq7yx2bbk";
       };
     };
+    customPlugins.vim-tmux-clipboard= pkgs.vimUtils.buildVimPlugin {
+      name = "vim-tmux-clipboard";
+      src = pkgs.fetchFromGitHub {
+        owner = "roxma";
+        repo = "vim-tmux-clipboard";
+        rev = "47187740b88f9dab213f44678800cc797223808e";
+        sha256 = "1a7rpbvb7dgjfnrh95zg2ia6iiz2mz2xps31msb8h14hcj6dsv6y";
+      };
+    };
     in {
       packageOverrides = pkgs: with pkgs; {
       # install by nix-env -iA nixpkg.myVim
@@ -20,7 +29,7 @@
       	name = "vim-with-plugins";
         vimrcConfig.vam.knownPlugins = pkgs.vimPlugins // customPlugins;
         vimrcConfig.vam.pluginDictionaries = [ 
-          { names = [ "vim-better-whitespace" "vim-go" ]; } 
+          { names = [ "vim-better-whitespace" "vim-tmux-clipboard" "vim-go" ]; } 
         ];
       	vimrcConfig.customRC = ''
       	  set hidden
