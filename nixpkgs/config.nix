@@ -34,9 +34,48 @@
       	vimrcConfig.customRC = ''
       	  set hidden
       	  set colorcolumn=80 
-            set number
-            syntax enable
+          set number
+          syntax enable
+          augroup vimrc
+          " remove all previously defined autocommands
+            autocmd!  
+            "
+            "autocmd VimEnter * NERDTree
+            
+            " set python indentation
+            au BufNewFile,BufRead *.py
+                \ setlocal tabstop=4|
+                \ setlocal softtabstop=4|
+                \ setlocal shiftwidth=4|
+                \ setlocal expandtab|
+                \ setlocal shiftround
+            
+            " set html indentation
+            au BufNewFile,BufRead *.html,*.tex,*.sh,*.F90,*.R,*.Rnw,*.hs
+                \ setlocal tabstop=2 |
+                \ setlocal softtabstop=2 |
+                \ setlocal shiftwidth=2| 
+                \ setlocal expandtab |
+                \ setlocal autoindent |
+                \ setlocal fileformat=unix |
+               " \ setlocal textwidth=79
+          augroup END 
+          let g:LanguageClient_serverCommands = {
+           \ 'python': ['pyls']
+           \ }
+          nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+          nnoremap <silent> gh :call LanguageClient_textDocument_hover()<CR>
+          nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+          nnoremap <silent> gr :call LanguageClient_textDocument_references()<CR>
+          nnoremap <silent> gs :call LanguageClient_textDocument_documentSymbol()<CR>
+          nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+          nnoremap <silent> gf :call LanguageClient_textDocument_formatting()<CR>
       	'';
+          vimrcConfig.packages.myVimPackage = with pkgs.vimPlugins; {
+            # see examples below how to use custom packages
+            start = [ LanguageClient-neovim vim-nix ];
+            opt = [ ];
+        	};      
           #vimrcConfig.packages.myVimPackage = with pkgs.vimPlugins; {
           #  # loaded on launch
           #  start = [ vim-go vim-better-whitespace ];

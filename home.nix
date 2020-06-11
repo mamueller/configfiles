@@ -38,6 +38,9 @@ let vimrcstr= ''
       ps.pyls-mypy ps.pyls-isort ps.pyls-black
       ]))
     ];
+    # At the moment we do not install vim via homemanager 
+    # but directly via nix-env since I do not know how to make 
+    # the extra vam plugins work via homemanager
     #programs.vim = {
     #  enable = true;
     #  plugins =  [ 
