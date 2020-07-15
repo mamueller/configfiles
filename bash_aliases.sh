@@ -1,4 +1,6 @@
-alias vi='nvim'
+alias vimdiff='vim-with-plugins -d'
+alias vim='vim-with-plugins'
+alias vi='vim-with-plugins'
 alias gt='gnome-terminal'
 alias jl='jupyter-lab --port=8889 --port-retries=0 --no-browser'
 alias jn='jupyter notebook --port=8889 --port-retries=0 --no-browser'
@@ -14,3 +16,5 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
+    alias cdc2="cd ~/bgc_md2/bgc_md2/models/cable_all/cable_transit_time/"
+    alias cdd2="cd /home/data/cable-data/example_runs/"

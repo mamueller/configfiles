@@ -1,5 +1,5 @@
-## ~/.nixpkgs/config.nix 
-## this file is not used at the moment since the packages are installed 
+## ~/.nixpkgs/config.nix
+## this file is used at the moment since these packages are not installed
 ## by home manager
 {  pkgs, ... }:
   let
@@ -28,38 +28,43 @@
       	# add custom .vimrc lines like this:
       	name = "vim-with-plugins";
         vimrcConfig.vam.knownPlugins = pkgs.vimPlugins // customPlugins;
-        vimrcConfig.vam.pluginDictionaries = [ 
-          { names = [ "vim-better-whitespace" "vim-tmux-clipboard" "vim-go" ]; } 
+        vimrcConfig.vam.pluginDictionaries = [
+          { names = [ "vim-better-whitespace" "vim-tmux-clipboard" "vim-go" ]; }
         ];
       	vimrcConfig.customRC = ''
       	  set hidden
-      	  set colorcolumn=80 
+      	  set colorcolumn=80
           set number
+          set hls
+          set mouse=a
           syntax enable
           augroup vimrc
           " remove all previously defined autocommands
-            autocmd!  
+            autocmd!
             "
             "autocmd VimEnter * NERDTree
-            
+
             " set python indentation
+            " and keyremapping see :help key-notation
             au BufNewFile,BufRead *.py
                 \ setlocal tabstop=4|
                 \ setlocal softtabstop=4|
                 \ setlocal shiftwidth=4|
                 \ setlocal expandtab|
-                \ setlocal shiftround
-            
+                \ setlocal shiftround|
+                \ inoremap = <Space>=<Space>|
+                \ inoremap , ,<Space>
+
             " set html indentation
             au BufNewFile,BufRead *.html,*.tex,*.sh,*.F90,*.R,*.Rnw,*.hs
                 \ setlocal tabstop=2 |
                 \ setlocal softtabstop=2 |
-                \ setlocal shiftwidth=2| 
+                \ setlocal shiftwidth=2|
                 \ setlocal expandtab |
                 \ setlocal autoindent |
                 \ setlocal fileformat=unix |
                " \ setlocal textwidth=79
-          augroup END 
+          augroup END
           let g:LanguageClient_serverCommands = {
            \ 'python': ['pyls']
            \ }
@@ -75,7 +80,7 @@
             # see examples below how to use custom packages
             start = [ LanguageClient-neovim vim-nix ];
             opt = [ ];
-        	};      
+        	};
           #vimrcConfig.packages.myVimPackage = with pkgs.vimPlugins; {
           #  # loaded on launch
           #  start = [ vim-go vim-better-whitespace ];
@@ -108,7 +113,7 @@
             # see examples below how to use custom packages
             start = [ LanguageClient-neovim vim-nix ];
             opt = [ ];
-        	};      
+        	};
         };
       };
     };
