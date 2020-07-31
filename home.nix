@@ -21,7 +21,6 @@ let vimrcstr= ''
   ''; in {
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;
-
     # This value determines the Home Manager release that your
     # configuration is compatible with. This helps avoid breakage
     # when a new Home Manager release introduces backwards
@@ -67,4 +66,7 @@ let vimrcstr= ''
       # the following plugins are optional, they provide type checking, import sorting and code formatting
       ps.pyls-mypy ps.pyls-isort ps.pyls-black
     ]);
+    nixpkgs.config.allowUnfree = true;
+    programs.vscode.enable = true;
+    #programs.vscode.extensions = [programs.vscode.bbenoist.Nix];
 }

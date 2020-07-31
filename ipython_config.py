@@ -1,5 +1,6 @@
-# link this file to '~/.ipython/profile_default/ipython_config.py'
 # Configuration file for ipython.
+# for the present version this file should be linked to :
+# ~/.ipython/profile_default/ipython_kernel_config.py'
 
 #------------------------------------------------------------------------------
 # InteractiveShellApp(Configurable) configuration
@@ -30,10 +31,10 @@
 #c.InteractiveShellApp.exec_files = []
 
 ## lines of code to run at IPython startup.
-#c.InteractiveShellApp.exec_lines = []
+c.InteractiveShellApp.exec_lines = ['%autoreload 2']
 
 ## A list of dotted module names of IPython extensions to load.
-#c.InteractiveShellApp.extensions = []
+c.InteractiveShellApp.extensions = ['autoreload']
 
 ## dotted module name of an IPython extension to load.
 #c.InteractiveShellApp.extra_extension = ''
@@ -41,13 +42,19 @@
 ## A file to be run
 #c.InteractiveShellApp.file_to_run = ''
 
-## Enable GUI event loop integration with any of ('glut', 'gtk', 'gtk2', 'gtk3',
-#  'osx', 'pyglet', 'qt', 'qt4', 'qt5', 'tk', 'wx', 'gtk2', 'qt4').
+## Enable GUI event loop integration with any of ('asyncio', 'glut', 'gtk',
+#  'gtk2', 'gtk3', 'osx', 'pyglet', 'qt', 'qt4', 'qt5', 'tk', 'wx', 'gtk2',
+#  'qt4').
 #c.InteractiveShellApp.gui = None
 
 ## Should variables loaded at startup (by startup files, exec_lines, etc.) be
 #  hidden from tools like %who?
 #c.InteractiveShellApp.hide_initial_ns = True
+
+## If True, IPython will not add the current working directory to sys.path. When
+#  False, the current working directory is added to sys.path, allowing imports of
+#  modules defined in the current directory.
+#c.InteractiveShellApp.ignore_cwd = False
 
 ## Configure matplotlib for interactive use with the default matplotlib backend.
 #c.InteractiveShellApp.matplotlib = None
@@ -169,7 +176,7 @@
 #c.InteractiveShell.automagic = True
 
 ## The part of the banner to be printed before the profile
-#c.InteractiveShell.banner1 = "Python 3.6.5 (default, Jul  9 2018, 18:00:16) \nType 'copyright', 'credits' or 'license' for more information\nIPython 7.3.0 -- An enhanced Interactive Python. Type '?' for help.\n"
+#c.InteractiveShell.banner1 = "Python 3.8.2 (default, Mar 26 2020, 15:53:00) \nType 'copyright', 'credits' or 'license' for more information\nIPython 7.16.1 -- An enhanced Interactive Python. Type '?' for help.\n"
 
 ## The part of the banner to be printed after the profile
 #c.InteractiveShell.banner2 = ''
@@ -279,6 +286,9 @@
 # TerminalInteractiveShell(InteractiveShell) configuration
 #------------------------------------------------------------------------------
 
+## Autoformatter to reformat Terminal code. Can be `'black'` or `None`
+#c.TerminalInteractiveShell.autoformatter = None
+
 ## Set to confirm when you try to exit IPython with an EOF (Control-D in Unix,
 #  Control-Z/Enter in Windows). By typing 'exit' or 'quit', you can force a
 #  direct exit without any confirmation.
@@ -293,7 +303,7 @@
 #c.TerminalInteractiveShell.editing_mode = 'emacs'
 
 ## Set the editor used by IPython (default to $EDITOR/vi/notepad).
-#c.TerminalInteractiveShell.editor = '/usr/bin/vi'
+#c.TerminalInteractiveShell.editor = 'nvim'
 
 ## Allows to enable/disable the prompt toolkit history search
 #c.TerminalInteractiveShell.enable_history_search = True
@@ -317,6 +327,9 @@
 ## Override highlighting format for specific tokens
 #c.TerminalInteractiveShell.highlighting_style_overrides = {}
 
+## 
+#c.TerminalInteractiveShell.mime_renderers = {}
+
 ## Enable mouse support in the prompt (Note: prevents selecting text with the
 #  mouse)
 #c.TerminalInteractiveShell.mouse_support = False
@@ -337,7 +350,10 @@
 #  variable is set, or the current terminal is not a tty.
 #c.TerminalInteractiveShell.simple_prompt = False
 
-## Number of line at the bottom of the screen to reserve for the completion menu
+## Number of line at the bottom of the screen to reserve for the tab completion
+#  menu, search history, ...etc, the height of these menus will at most this
+#  value. Increase it is you prefer long and skinny menus, decrease for short and
+#  wide.
 #c.TerminalInteractiveShell.space_for_menu = 6
 
 ## Automatically set the terminal title
@@ -610,9 +626,3 @@
 ## If True, any %store-d variables will be automatically restored when IPython
 #  starts.
 #c.StoreMagics.autorestore = False
-
-
-#fixme mm: how to do this properly
-# 
-#%load_ext autoreload
-#%autoreload 2

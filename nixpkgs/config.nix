@@ -23,7 +23,7 @@
     };
     in {
       packageOverrides = pkgs: with pkgs; {
-      # install by nix-env -iA nixpkg.myVim
+      # install by nix-env -iA nixpkgs.myVim
       myVim = vim_configurable.customize {
       	# add custom .vimrc lines like this:
       	name = "vim-with-plugins";
@@ -38,6 +38,11 @@
           set hls
           set mouse=a
           syntax enable
+          "
+          "key maps 
+          "
+          map <F2> :nohls <CR>
+          "
           augroup vimrc
           " remove all previously defined autocommands
             autocmd!
@@ -52,8 +57,8 @@
                 \ setlocal shiftwidth=4|
                 \ setlocal expandtab|
                 \ setlocal shiftround|
-                \ inoremap = <Space>=<Space>|
-                \ inoremap , ,<Space>
+                " \ inoremap = <Space>=<Space>|
+                "\ inoremap , ,<Space>
 
             " set html indentation
             au BufNewFile,BufRead *.html,*.tex,*.sh,*.F90,*.R,*.Rnw,*.hs
