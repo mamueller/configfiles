@@ -68,8 +68,10 @@ Host antakya antakya-from-home antakya-tunnel-8889-to-localhost-8080 antakya-tun
 	ServerAliveInterval     60
 
 Host antakya antakya-tunnel-8889 matagorda matagorda-tunnel-8889 antakya-from-home antakya-tunnel-8889-from-home matagorda-from-home matagorda-tunnel-8889-from-home
+	ForwardAgent		yes
 	ForwardX11              yes
 	ForwardX11Trusted       yes
+	Compression		yes
 
 Host antakya-from-home antakya-tunnel-8889-from-home matagorda-from-home matagorda-tunnel-8889-from-home 
 	ProxyCommand ssh -q -W %h:%p login
@@ -77,3 +79,7 @@ Host antakya-from-home antakya-tunnel-8889-from-home matagorda-from-home matagor
 	# the -J (jumphost) option 
 	# on the commandline 
 	# ssh -J login antakya
+
+# to connect to the scheduler status to have on localhost:8686
+# ssh -L 8686:localhost:8787 mm@matagorda-from-home
+#        local          remote 
