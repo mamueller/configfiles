@@ -3,6 +3,20 @@
 ## by home manager
 {  pkgs, ... }:
   let
+    R-with-my-packages =pkgs.rWrapper.override{packages = with pkgs.rPackages; [
+      devtools 
+      roxygen2
+      getopt 
+      FME 
+      dplyr 
+      testthat
+      argparse
+      stringr
+      RUnit
+      knitr
+      rmarkdown
+      rhub
+    ]; };
     customPlugins.vim-better-whitespace = pkgs.vimUtils.buildVimPlugin {
       name = "vim-better-whitespace";
       src = pkgs.fetchFromGitHub {
@@ -20,6 +34,15 @@
         rev = "47187740b88f9dab213f44678800cc797223808e";
         sha256 = "1a7rpbvb7dgjfnrh95zg2ia6iiz2mz2xps31msb8h14hcj6dsv6y";
       };
+    };
+    customPlugins.nvim-r = pkgs.vimUtils.buildVimPlugin {
+      name = "nvim-r";
+      src = pkgs.fetchgit {
+        url= "https://github.com/jalvesaq/nvim-r";
+        rev =  "c53b5a402a26df5952718f483c7461af5bb459eb";
+        sha256 = "13xbb05gnpgmyaww6029saplzjq7cq2dxzlxylcynxhhyibz5ibv";
+        };
+      buildInputs = [ pkgs.which pkgs.vim pkgs.zip];
     };
     in {
       packageOverrides = pkgs: with pkgs; {
@@ -41,7 +64,7 @@
           "
           "key maps 
           "
-          map <F2> :nohls <CR>
+          map <F6> :nohls <CR>
           "
           augroup vimrc
           " remove all previously defined autocommands
@@ -99,10 +122,44 @@
         configure = {
           # here your custom configuration goes!
         	customRC = ''
-            set number
+                  "
+                  "key maps 
+                  "
+                  map <F6> :nohls <CR>
+                  "
+                  set number
+                  set mouse=a
+                  augroup vimrc
+                  " remove all previously defined autocommands
+                    autocmd!
+                    "
+                    "autocmd VimEnter * NERDTree
+
+                    " set python indentation
+                    " and keyremapping see :help key-notation
+                    au BufNewFile,BufRead *.py
+                        \ setlocal tabstop=4|
+                        \ setlocal softtabstop=4|
+                        \ setlocal shiftwidth=4|
+                        \ setlocal expandtab|
+                        \ setlocal shiftround|
+                        " \ inoremap = <Space>=<Space>|
+                        "\ inoremap , ,<Space>
+
+                    " set html indentation
+                    au BufNewFile,BufRead *.html,*.tex,*.sh,*.F90,*.R,*.Rnw,*.hs
+                        \ setlocal tabstop=2 |
+                        \ setlocal softtabstop=2 |
+                        \ setlocal shiftwidth=2|
+                        \ setlocal expandtab |
+                        \ setlocal autoindent |
+                        \ setlocal fileformat=unix |
+                       " \ setlocal textwidth=79
+                  augroup END
         	  let g:LanguageClient_serverCommands = {
         	   \ 'python': ['pyls']
         	   \ }
+        	  let g:LanguageClient_diagnosticsList = "Disabled"
         	  nnoremap <F5> :call LanguageClient_contextMenu()<CR>
         	  nnoremap <silent> gh :call LanguageClient_textDocument_hover()<CR>
         	  nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
@@ -114,13 +171,14 @@
           #plug.plugins = with pkgs.vimPlugins; [
           #  vim-go
           #];
-          packages.myVimPackage = with pkgs.vimPlugins; {
+          packages.myVimPackage = with pkgs.vimPlugins // customPlugins; {
             # see examples below how to use custom packages
-            start = [ LanguageClient-neovim vim-nix ];
+            start = [ LanguageClient-neovim vim-nix nvim-r ];
             opt = [ ];
         	};
         };
       };
+      myR = R-with-my-packages; 
     };
   }
 
