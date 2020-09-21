@@ -37,6 +37,11 @@ let vimrcstr= ''
       ps.pyls-mypy ps.pyls-isort ps.pyls-black
       ]))
     ];
+    home.sessionVariables = {
+      EDITOR = "nvim";
+    };
+    #programs.bash.enable = true; #this would homemanager cause to manage the .bashrc and .profile files
+    
     # At the moment we do not install vim via homemanager 
     # but directly via nix-env since I do not know how to make 
     # the extra vam plugins work via homemanager
@@ -69,4 +74,6 @@ let vimrcstr= ''
     nixpkgs.config.allowUnfree = true;
     programs.vscode.enable = true;
     #programs.vscode.extensions = [programs.vscode.bbenoist.Nix];
+    
 }
+

@@ -93,6 +93,10 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 # enamble nix
-#source /home/mm/.nix-profile/etc/profile.d/nix.sh 
+source /home/mm/.nix-profile/etc/profile.d/nix.sh 
+#export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH # for home manager
+
 source /etc/profile.d/nix.sh 
-export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH # for home manager
+# to make the environment varaible that are set via home manager available:
+source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh 
+
