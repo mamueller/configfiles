@@ -62,14 +62,17 @@ Host antakya-from-home  matagorda-from-home
 
 Host matagorda matagorda-from-home
 	LocalForward 8081 localhost:8889
-	# The callers localhost:8081 will point to remote:8889 #jupyter
-	LocalForward 7081 localhost:8789 # dask dashboard
+	# The callers localhost:8081 will point to remote:8889 
+	# jupyter	
+	LocalForward 7081 localhost:8789 
+	# dask dashboard
 
 Host antakya antakya-from-home
 	LocalForward 8081 localhost:8889
-	# The callers localhost:8080 will point to remote:8889 #jupyter
-
-	LocalForward 7080 localhost:8789 # dask dashboard
+	# The callers localhost:8080 will point to remote:8889 
+	# jupyter
+	LocalForward 7080 localhost:8789 
+	# for dask dashboard
 	# The callers localhost:7080 will point to remote:8789
 	# equivalent to ssh -L 7080:localhost:8789 mm@antakya-from-home
 
