@@ -1,44 +1,24 @@
-
 Host    login
 	HostName login.bgc-jena.mpg.de
 
 Host    antakya-from-home
 	HostName antakya.bgc-jena.mpg.de
 
-Host    antakya 
+Host    antakya
 	HostName antakya.bgc-jena.mpg.de
 
-Host    antakya-tunnel-8889-from-home
-	HostName antakya.bgc-jena.mpg.de
-	LocalForward 8080 localhost:8889 
-	# The callers localhost:8080 will point to remote:8889
-
-Host    antakya-tunnel-8889
-	HostName antakya.bgc-jena.mpg.de
-	LocalForward 8080 localhost:8889 
-	
 Host    matagorda-from-home
 	HostName matagorda.bgc-jena.mpg.de
 
 Host    matagorda
 	HostName matagorda.bgc-jena.mpg.de
 
-Host    matagorda-tunnel-8889-from-home
-	HostName matagorda.bgc-jena.mpg.de
-	LocalForward 8081 localhost:8889 
-	# The callers localhost:8081 will point to remote:8889
-
-Host    matagorda-tunnel-8889
-	HostName matagorda.bgc-jena.mpg.de
-	LocalForward 8081 localhost:8889 
-	# The callers localhost:8081 will point to remote:8889
-
 Host    musculus
 	HostName musculus.luhj.de
-	#HostName  
+	#HostName
 
 Host    hyperius
-	HostName  hyperius.luhj.de 
+	HostName  hyperius.luhj.de
 	#HostName 5.9.54.92
 
 Host    myconius
@@ -61,25 +41,35 @@ HostName 192.168.1.103
 Host     login
 User     mamueller
 
-Host antakya antakya-tunnel-8889-to-localhost-8080 arm agricola agricola6 bodenstein hyperius matagorda matagorda-tunnel-8889-to-localhost-8080  myconius musculus 
+Host antakya arm agricola agricola6 bodenstein hyperius matagorda   myconius musculus
 	User     mm
 
-Host antakya antakya-from-home antakya-tunnel-8889-to-localhost-8080 antakya-tunnel-8889-to-localhost-8080-from-home arm agricola agricola6 bodenstein hyperius login matagorda matagorda-tunnel-8889-to-localhost-8080  matagorda-from-home matagorda-tunnel-8889-to-localhost-8080-from-home myconius musculus 
+Host antakya antakya-from-home   arm agricola agricola6 bodenstein hyperius login matagorda  matagorda-from-home  myconius musculus
 	ServerAliveInterval     60
 
-Host antakya antakya-tunnel-8889 matagorda matagorda-tunnel-8889 antakya-from-home antakya-tunnel-8889-from-home matagorda-from-home matagorda-tunnel-8889-from-home
+Host antakya  matagorda  antakya-from-home  matagorda-from-home
 	ForwardAgent		yes
 	ForwardX11              yes
 	ForwardX11Trusted       yes
 	Compression		yes
 
-Host antakya-from-home antakya-tunnel-8889-from-home matagorda-from-home matagorda-tunnel-8889-from-home 
+Host antakya-from-home  matagorda-from-home
 	ProxyCommand ssh -q -W %h:%p login
-	# this effects the same action as using 
-	# the -J (jumphost) option 
-	# on the commandline 
+	# this effects the same action as using
+	# the -J (jumphost) option
+	# on the commandline
 	# ssh -J login antakya
 
-# to connect to the scheduler status to have on localhost:8686
-# ssh -L 8686:localhost:8787 mm@matagorda-from-home
-#        local          remote 
+Host matagorda matagorda-from-home
+	LocalForward 8081 localhost:8889
+	# The callers localhost:8081 will point to remote:8889 #jupyter
+	LocalForward 7081 localhost:8789 # dask dashboard
+
+Host antakya antakya-from-home
+	LocalForward 8081 localhost:8889
+	# The callers localhost:8080 will point to remote:8889 #jupyter
+
+	LocalForward 7080 localhost:8789 # dask dashboard
+	# The callers localhost:7080 will point to remote:8789
+	# equivalent to ssh -L 7080:localhost:8789 mm@antakya-from-home
+
